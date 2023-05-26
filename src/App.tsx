@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <Box className='main'>
-      <Header setCurrency={setSelectedCurrency} />
+      <Header chosenCurrency={selectedCurrency} setCurrency={setSelectedCurrency} />
       <Box className='calculator'>
         <TextField 
           label='Enter gold value (g)'

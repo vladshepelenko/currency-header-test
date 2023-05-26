@@ -10,14 +10,14 @@ import './style/CurrencyPicker.scss';
 
 interface ICurrencyPickerProps {
   shouldCollapse: boolean;
+  chosenCurrency: ICurrency; 
   setCurrency: (currency: ICurrency) => void;
 }
 
-const CurrencyPicker = ({ shouldCollapse, setCurrency }: ICurrencyPickerProps) => {
-  const defaultCurrency = currencies.filter((currency: ICurrency) => currency.isDefault);
+const CurrencyPicker = ({ chosenCurrency, shouldCollapse, setCurrency }: ICurrencyPickerProps) => {
   const [expanded, setExpanded] = React.useState<string | false>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedCurrency, setSelectedCurrency] = useState<ICurrency>(defaultCurrency.length ? defaultCurrency[0] : currencies[0]);
+  const [selectedCurrency, setSelectedCurrency] = useState<ICurrency>(chosenCurrency);
 
   const handleOpenMenu = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);

@@ -11,15 +11,17 @@ import { ICurrency } from './config/currencies';
 const COLLAPSE_BREAKPOINT = 960;
 
 interface IHeaderProps {
+  chosenCurrency: ICurrency; 
   setCurrency: (currency: ICurrency) => void;
 }
 
 interface IHeaderMenuProps {
   shouldCollapse: boolean;
+  chosenCurrency: ICurrency; 
   setCurrency: (currency: ICurrency) => void;
 }
 
-const HeaderMenu = ({ shouldCollapse, setCurrency }: IHeaderMenuProps) => {
+const HeaderMenu = ({ chosenCurrency, shouldCollapse, setCurrency }: IHeaderMenuProps) => {
   return (
     <Box className={`appBar__content ${shouldCollapse ? 'content-collapsed' : null}`}>
       <Box className={`appBar__content__menus ${shouldCollapse ? 'menus-collapsed' : null}`}>
@@ -63,7 +65,11 @@ const HeaderMenu = ({ shouldCollapse, setCurrency }: IHeaderMenuProps) => {
       </Box>
       <Box className={`appBar__content__controls ${shouldCollapse ? 'controls-collapsed' : null}`}>
         <Box className={`appBar__content__controls__picker ${shouldCollapse ? 'picker-collapsed' : null}`}>
-          <CurrencyPicker shouldCollapse={shouldCollapse} setCurrency={setCurrency} />
+          <CurrencyPicker 
+            chosenCurrency={chosenCurrency} 
+            shouldCollapse={shouldCollapse} 
+            setCurrency={setCurrency} 
+          />
         </Box>
         <Box className={`appBar__content__controls__auth ${shouldCollapse ? 'auth-collapsed' : null}`}>
           <Box className={`appBar__content__controls__auth__signup ${shouldCollapse ? 'signup-button-collapsed' : null}`}>
@@ -76,7 +82,7 @@ const HeaderMenu = ({ shouldCollapse, setCurrency }: IHeaderMenuProps) => {
   );
 }
 
-const Header = ({ setCurrency }: IHeaderProps) => {
+const Header = ({ chosenCurrency, setCurrency }: IHeaderProps) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [shouldCollapse, setShouldCollapse] = useState(false);
 
@@ -242,11 +248,11 @@ const Header = ({ setCurrency }: IHeaderProps) => {
                   <Box className='content-minified__controls__login'><Typography variant='body2'>Log In</Typography></Box>
                 </Box>
               </Box>
-            : <HeaderMenu shouldCollapse={shouldCollapse} setCurrency={setCurrency} />
+            : <HeaderMenu chosenCurrency={chosenCurrency} shouldCollapse={shouldCollapse} setCurrency={setCurrency} />
           }
         </Toolbar>
         {isNavOpen ? (
-          <HeaderMenu shouldCollapse={shouldCollapse} setCurrency={setCurrency} />
+          <HeaderMenu chosenCurrency={chosenCurrency} shouldCollapse={shouldCollapse} setCurrency={setCurrency} />
         ) : null}
       </AppBar>
     </ThemeProvider>
