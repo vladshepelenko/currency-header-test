@@ -1,0 +1,214 @@
+@import './variables';
+
+.appBar {
+
+  &.collapsed {
+    height: 100vh;
+  }
+
+  &.navOpen {
+    .menuButton {
+      display: none;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &.content-collapsed {
+      flex-direction: column;
+    }
+
+    &__menus {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      &.menus-collapsed {
+        width: 100%;
+      }
+
+      &__logo {
+        margin-right: 40px;
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &.menus-list-collapsed {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        &__item {
+          margin-right: 32px;
+          cursor: pointer;
+
+          &.menus-list-item-collapsed {
+            margin-right: 0;
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+            padding-top: 10px;
+
+            h6 {
+              text-align: start;
+
+              &:hover {
+                color: $yellow-highlight;
+              }
+    
+              &.active {
+                color: $yellow;
+              }
+            }
+          }
+
+          p {
+            &:hover {
+              color: $yellow-highlight;
+            }
+  
+            &.active {
+              color: $yellow;
+              position: relative;
+  
+              &::before {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 24px;
+                height: 1.5px;
+                background-color: $yellow;
+              }
+            }
+          }
+
+          
+        }
+      }
+    }
+
+    &__controls {
+      display: flex;
+      align-items: center;
+
+      &.controls-collapsed {
+        flex-direction: column;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      &__picker {
+        margin-right: 37px;
+
+        &.picker-collapsed {
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+
+      &__auth {
+        display: flex;
+        flex-direction: row;
+
+        &.auth-collapsed {
+          width: 100%;
+          border-top: 1px solid rgba(255, 255, 255, 0.2);
+          padding-top: 10px;
+          justify-content: flex-start;
+        }
+
+        &__signup {
+          cursor: pointer;
+          padding-left: 24px;
+          padding-right: 24px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+
+          &.signup-button-collapsed {
+            border: 2px solid $white;
+            border-radius: 4px;
+            margin-right: 16px;
+
+            &:hover {
+              border-color: $yellow-highlight;
+            }
+          }
+
+          p {
+            color: white;
+          }
+
+          &:hover {
+            p {
+              color: $yellow-highlight;
+            }
+          }
+        }
+
+        &__login {
+          cursor: pointer;
+          background-color: $yellow;
+          color: $dark;
+          padding-left: 24px;
+          padding-right: 24px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          box-shadow: 1px 2px 5px 0px #00000026;
+          border-radius: 4px;
+
+          &:hover {
+            background-color: $yellow-highlight;
+          }
+        }
+      }
+    }
+  }
+
+  .menuButton {
+    margin-right: 2rem;
+    @media (min-width: 960px) {
+      display: none;
+    }
+  }
+
+  .title {
+    flex-grow: 1;
+  }
+
+}
+
+.content-minified {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+
+  &__controls {
+    display: flex;
+    align-items: center;
+
+    &__login {
+      cursor: pointer;
+      background-color: $yellow;
+      color: $dark;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      box-shadow: 1px 2px 5px 0px #00000026;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $yellow-highlight;
+      }
+    }
+  }
+
+}
